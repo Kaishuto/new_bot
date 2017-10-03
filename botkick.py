@@ -126,8 +126,8 @@ def SEND_MESSAGE(op):
             if msg.contentType == 0:
                 #if "gname:" in msg.text:
 #--------------------------------------------------------------
-         if msg.text == "sider":
-                    sendMessage(msg.to, "udah saya set gan \n「muncul」nih list yg read")
+         if msg.text == "set":
+                    sendMessage(msg.to, "udah saya set gan \n「tes」nih list yg read")
                     try:
                         del wait['readPoint'][msg.to]
                         del wait['readMember'][msg.to]
@@ -138,7 +138,7 @@ def SEND_MESSAGE(op):
                     wait['setTime'][msg.to] = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
                     wait['ROM'][msg.to] = {}
                     print wait
-                if msg.text == "muncul":
+                if msg.text == "tes":
                     if msg.to in wait['readPoint']:
                         if wait["ROM"][msg.to].items() == []:
                             chiya = ""
@@ -150,7 +150,7 @@ def SEND_MESSAGE(op):
 
                         sendMessage(msg.to, "Woy anjeng %s\nthat's it\n\nJangan read doang\n%s \nReading point creation date n time:\n[%s]"  % (wait['readMember'][msg.to],chiya,setTime[msg.to]))
                     else:
-                        sendMessage(msg.to, "Lupa set gan\n「sider」Harus buat buat point dulu♪")
+                        sendMessage(msg.to, "Lupa set gan\n「set」Harus buat buat point dulu♪")
                 else:
                     pass
         else:
