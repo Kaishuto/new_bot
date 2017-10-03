@@ -126,27 +126,7 @@ def SEND_MESSAGE(op):
             if msg.contentType == 0:
                 #if "gname:" in msg.text:
 #--------------------------------------------------------------
-                if msg.text == "Ngentod":
-                    print "ok"
-                    _name = msg.text.replace("Samlekom","")
-                    gs = client.getGroup(msg.to)
-                    sendMessage(msg.to,"Mamhank")
-                    targets = []
-                    for g in gs.members:
-                        if _name in g.displayName:
-                            targets.append(g.mid)
-                    if targets == []:
-                        sendMessage(msg.to,"error")
-                    else:
-                        for target in targets:
-                            try:
-                                klist=[client]
-                                kicker=random.choice(klist)
-                                kicker.kickoutFromGroup(msg.to,[target])
-                                print (msg.to,[g.mid])
-                            except:
-                                sendText(msg.to,"error")
- if msg.text == "sider":
+         if msg.text == "sider":
                     sendMessage(msg.to, "udah saya set gan \n「muncul」nih list yg read")
                     try:
                         del wait['readPoint'][msg.to]
@@ -174,12 +154,28 @@ def SEND_MESSAGE(op):
                 else:
                     pass
         else:
-            pass
-
-    except Exception as e:
-        print e
-        print ("\n\nSEND_MESSAGE\n\n")
-        return
+            pass       
+	if msg.text == "Ngentod":
+                    print "ok"
+                    _name = msg.text.replace("Samlekom","")
+                    gs = client.getGroup(msg.to)
+                    sendMessage(msg.to,"Mamhank")
+                    targets = []
+                    for g in gs.members:
+                        if _name in g.displayName:
+                            targets.append(g.mid)
+                    if targets == []:
+                        sendMessage(msg.to,"error")
+                    else:
+                        for target in targets:
+                            try:
+                                klist=[client]
+                                kicker=random.choice(klist)
+                                kicker.kickoutFromGroup(msg.to,[target])
+                                print (msg.to,[g.mid])
+                            except:
+                                sendText(msg.to,"error")
+		
 if msg.text == "cancel":
                     group = client.getGroup(msg.to)
                     if group.invitee is None:
