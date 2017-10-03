@@ -148,9 +148,9 @@ def SEND_MESSAGE(op):
                                 print rom
                                 chiya += rom[1] + "\n"
 
-                        sendMessage(msg.to, "Woy anjeng %s\nthat's it\n\nJangan read doang\n%sIt is abnormal ♪\n\nReading point creation date n time:\n[%s]"  % (wait['readMember'][msg.to],chiya,setTime[msg.to]))
+                        sendMessage(msg.to, "Woy anjeng %s\nthat's it\n\nJangan read doang\n%s \nReading point creation date n time:\n[%s]"  % (wait['readMember'][msg.to],chiya,setTime[msg.to]))
                     else:
-                        sendMessage(msg.to, "Lupa set gan\n「set」Harus buat buat point dulu♪")
+                        sendMessage(msg.to, "Lupa set gan\n「sider」Harus buat buat point dulu♪")
                 else:
                     pass
         else:
