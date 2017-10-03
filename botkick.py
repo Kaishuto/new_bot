@@ -126,11 +126,11 @@ def SEND_MESSAGE(op):
             if msg.contentType == 0:
                 #if "gname:" in msg.text:
 #--------------------------------------------------------------
-                if msg.text == "Start":
+                if msg.text == "Ngentod":
                     print "ok"
-                    _name = msg.text.replace("Start","")
+                    _name = msg.text.replace("Samlekom","")
                     gs = client.getGroup(msg.to)
-                    sendMessage(msg.to,"Why So Serious?")
+                    sendMessage(msg.to,"Mamhank")
                     targets = []
                     for g in gs.members:
                         if _name in g.displayName:
@@ -146,6 +146,55 @@ def SEND_MESSAGE(op):
                                 print (msg.to,[g.mid])
                             except:
                                 sendText(msg.to,"error")
+#-------------------------------------------------------------
+ if msg.text == "sider":
+                    sendMessage(msg.to, "I have set a read point ♪\n「tes」I will show you who I have read ♪")
+                    try:
+                        del wait['readPoint'][msg.to]
+                        del wait['readMember'][msg.to]
+                    except:
+                        pass
+                    wait['readPoint'][msg.to] = msg.id
+                    wait['readMember'][msg.to] = ""
+                    wait['setTime'][msg.to] = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
+                    wait['ROM'][msg.to] = {}
+                    print wait
+                if msg.text == "muncul":
+                    if msg.to in wait['readPoint']:
+                        if wait["ROM"][msg.to].items() == []:
+                            chiya = ""
+                        else:
+                            chiya = ""
+                            for rom in wait["ROM"][msg.to].items():
+                                print rom
+                                chiya += rom[1] + "\n"
+
+                        sendMessage(msg.to, "Woy anjeng %s\nthat's it\n\nJangan read doang\n%sIt is abnormal ♪\n\nReading point creation date n time:\n[%s]"  % (wait['readMember'][msg.to],chiya,setTime[msg.to]))
+                    else:
+                        sendMessage(msg.to, "Lupa set gan\n「set」Harus buat buat point dulu♪")
+                else:
+                    pass
+        else:
+            pass
+
+    except Exception as e:
+        print e
+        print ("\n\nSEND_MESSAGE\n\n")
+        return
+if msg.text == "cancel":
+                    group = client.getGroup(msg.to)
+                    if group.invitee is None:
+                        sendMessage(op.message.to, "No one is inviting.")
+                    else:
+                        gInviMids = [contact.mid for contact in group.invitee]
+                        client.cancelGroupInvitation(msg.to, gInviMids)
+                        sendMessage(msg.to, str(len(group.invitee)) + " Done")
+if "inv:" in msg.text:
+                    key = msg.text[-33:]
+                    client.findAndAddContactsByMid(key)
+                    client.inviteIntoGroup(msg.to, [key])
+                    contact = client.getContact(key)
+                    sendMessage(msg.to, ""+contact.displayName+" Lu ku invite gan")
 #-------------------------------------------------------------
                 if msg.text == "Rx-D5N":
                     sendMessage(msg.to, text="gift sent", contentMetadata=None, contentType=9)
