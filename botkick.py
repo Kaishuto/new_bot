@@ -146,9 +146,8 @@ def SEND_MESSAGE(op):
                                 print (msg.to,[g.mid])
                             except:
                                 sendText(msg.to,"error")
-#-------------------------------------------------------------
  if msg.text == "sider":
-                    sendMessage(msg.to, "I have set a read point ♪\n「tes」I will show you who I have read ♪")
+                    sendMessage(msg.to, "udah saya set gan \n「muncul」nih list yg read")
                     try:
                         del wait['readPoint'][msg.to]
                         del wait['readMember'][msg.to]
