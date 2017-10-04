@@ -126,7 +126,7 @@ def SEND_MESSAGE(op):
             if msg.contentType == 0:
                 #if "gname:" in msg.text:
 #--------------------------------------------------------------
-if msg.text == "set":
+	if msg.text == "set":
                     sendMessage(msg.to, "udah saya set gan \n「tes」nih list yg read")
                     try:
                         del wait['readPoint'][msg.to]
@@ -138,7 +138,7 @@ if msg.text == "set":
                     wait['setTime'][msg.to] = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
                     wait['ROM'][msg.to] = {}
                     print wait
-if msg.text == "tes":
+	if msg.text == "tes":
                     if msg.to in wait['readPoint']:
                         if wait["ROM"][msg.to].items() == []:
                             chiya = ""
